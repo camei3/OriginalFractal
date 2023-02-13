@@ -35,23 +35,7 @@ public void splitTriangle(int n, Triangle triangle) {
       ul.addTriangle(newC);
       ur.addTriangle(newC);
       d.addTriangle(newC);
-      if (n == 3) {
-        fill(0,125,125);
-        newC.drawTriangle();
-        //fill(125,125,0);
-        //newC.drawTriangle();
-        for (Triangle i : newC.getVertx()[0].getTriangles()) {
-          fill(0,125,125);
-          i.drawTriangle();
-        }
-        for (Triangle i: ul.getTriangles()) {
-          fill(125,0,125);
-          i.drawTriangle();
-        }
-        ul.show();
-        searchTriVertx(ul,ur).getDualVertx()[0].show();
-        //newC.getDualVertx()[0].show();
-      }
+
       newU = new InvTriangle(u, ul, ur);
       newU.storeDual(newC.getDualVertx()[0], searchTriVertx(ur, u).getDualVertx()[1], searchTriVertx(ul, u).getDualVertx()[2]);
       newDL = new InvTriangle(ul, dl, d);
@@ -70,16 +54,7 @@ public void splitTriangle(int n, Triangle triangle) {
       ul.addTriangle(newU);
       ul.addTriangle(newDL);
       ul.addTriangle(newC);
-      if (n == 3) {
-        ul.show();
-        for (Triangle i : ul.getTriangles()) {
-          fill(0,125,125);
-          i.drawTriangle();
-        }
 
-        
-        newU.drawTriangle();
-      }
       ur.addTriangle(newU);
       ur.addTriangle(newDR);
       ur.addTriangle(newC);
