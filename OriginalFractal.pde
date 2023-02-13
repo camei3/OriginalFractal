@@ -1,4 +1,4 @@
-int iterations = 5;
+int iterations = 6;
 Triangle mainTriangle;
 public void setup() {
   size(800, 800);
