@@ -35,14 +35,24 @@ public void splitTriangle(int n, Triangle triangle) {
       ul.addTriangle(newC);
       ur.addTriangle(newC);
       d.addTriangle(newC);
-
+      
+      fill(255,75);
+      splitTriangle(n-1, newC);
+      
       newU = new InvTriangle(u, ul, ur);
       newU.storeDual(newC.getDualVertx()[0], searchTriVertx(ur, u).getDualVertx()[1], searchTriVertx(ul, u).getDualVertx()[2]);
       newDL = new InvTriangle(ul, dl, d);
       newDL.storeDual(searchTriVertx(d, dl).getDualVertx()[0], newC.getDualVertx()[1], searchTriVertx(ul, dl).getDualVertx()[2]);
       newDR = new InvTriangle(ur, d, dr);
       newDR.storeDual(searchTriVertx(d, dr).getDualVertx()[0], searchTriVertx(ur, dr).getDualVertx()[1], newC.getDualVertx()[2]);  
-    } else {
+ 
+      fill(255, 0, 0,75);
+      splitTriangle(n-1, newU);
+      fill(0, 255, 0,75);     
+      splitTriangle(n-1, newDL);
+      fill(0, 0, 255,75);
+      splitTriangle(n-1, newDR);  
+  } else {
       newU = new Triangle(u, ul, ur);
       createSierpinskiDual(newU);
       newDL = new Triangle(ul, dl, d);
@@ -54,26 +64,23 @@ public void splitTriangle(int n, Triangle triangle) {
       ul.addTriangle(newU);
       ul.addTriangle(newDL);
       ul.addTriangle(newC);
-
       ur.addTriangle(newU);
       ur.addTriangle(newDR);
       ur.addTriangle(newC);
       d.addTriangle(newDL);
       d.addTriangle(newDR);
       d.addTriangle(newC);    
-    }
-     
-     
-    strokeWeight(5);
-    stroke(255, 50);
-    fill(255, 0, 0,75);
-    splitTriangle(n-1, newU);
-    fill(0, 255, 0,75);     
-    splitTriangle(n-1, newDL);
-    fill(0, 0, 255,75);
-    splitTriangle(n-1, newDR);      
-    fill(255,75);
-    splitTriangle(n-1, newC);
+      
+      fill(255, 0, 0,75);
+      splitTriangle(n-1, newU);
+      fill(0, 255, 0,75);     
+      splitTriangle(n-1, newDL);
+      fill(0, 0, 255,75);
+      splitTriangle(n-1, newDR);    
+      
+      fill(255,75);
+      splitTriangle(n-1, newC);      
+    }     
   } else {
     triangle.drawTriangle();
   }
@@ -101,4 +108,6 @@ public Triangle searchTriVertx(Vertx child, Vertx matchee) {
   //matchee.show();
   return mainTriangle;
 };
+
+
 //make variable list to store adjacent triangles to a triangle? Triangle adjUp = ...
