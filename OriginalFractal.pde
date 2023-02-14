@@ -23,7 +23,7 @@ public void draw() {
   Vertx point1 = mainTriangle.getVertx()[1];  
   line(
     point0.getX(), point0.getY(), 
-    point1.getX(), point1.getY()
+    point0.getX() + (point1.getX()-point0.getX())/(point1.getY()-point0.getY())*700 , point0.getY() + 700
     );
 
   splitTriangle(ITERATIONS, mainTriangle);
