@@ -1,6 +1,6 @@
 public class Triangle {
-  private Vertx u, dl, dr;
-  private Vertx d, ur, ul;
+  protected Vertx u, dl, dr;
+  protected Vertx d, ur, ul;
   public Triangle(Vertx a, Vertx b, Vertx c) {
     u = a;
     dl = b;
@@ -8,7 +8,8 @@ public class Triangle {
   }
   
   public void drawTriangle() {
-    strokeWeight(3);
+    noStroke();    
+    fill(255-10*u.getGen(),200);
     triangle(u.getX(), u.getY(), dl.getX(), dl.getY(), dr.getX(), dr.getY());
   }
   public Vertx[] getVertx() {
