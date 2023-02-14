@@ -8,8 +8,8 @@ public class Vertx {
     generation = 0;
   }
   public Vertx(float x, float y, int gen) {
-    xPos = x;
-    yPos = y;
+    xPos = x + (float)(Math.random()-0.5)*150*pow(.5,gen);
+    yPos = y + (float)(Math.random()-0.5)*150*pow(.5,gen);
     generation = gen;
   }
   public void show() {
