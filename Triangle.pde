@@ -9,7 +9,7 @@ public class Triangle {
   
   public void drawTriangle() {
     noStroke();    
-    fill(255-10*u.getGen(),200);
+    fill(255-10*u.getGen(),125-10*u.getGen(),165-10*u.getGen(),200);
     triangle(u.getX(), u.getY(), dl.getX(), dl.getY(), dr.getX(), dr.getY());
   }
   public Vertx[] getVertx() {
