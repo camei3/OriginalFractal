@@ -36,7 +36,6 @@ public void splitTriangle(int n, Triangle triangle) {
       ur.addTriangle(newC);
       d.addTriangle(newC);
       
-      fill(255,75);
       splitTriangle(n-1, newC);
       
       newU = new InvTriangle(u, ul, ur);
@@ -46,11 +45,8 @@ public void splitTriangle(int n, Triangle triangle) {
       newDR = new InvTriangle(ur, d, dr);
       newDR.storeDual(searchTriVertx(d, dr).getDualVertx()[0], searchTriVertx(ur, dr).getDualVertx()[1], newC.getDualVertx()[2]);  
  
-      fill(255, 0, 0,75);
       splitTriangle(n-1, newU);
-      fill(0, 255, 0,75);     
       splitTriangle(n-1, newDL);
-      fill(0, 0, 255,75);
       splitTriangle(n-1, newDR);  
   } else {
       newU = new Triangle(u, ul, ur);
@@ -71,14 +67,9 @@ public void splitTriangle(int n, Triangle triangle) {
       d.addTriangle(newDR);
       d.addTriangle(newC);    
       
-      fill(255, 0, 0,75);
       splitTriangle(n-1, newU);
-      fill(0, 255, 0,75);     
       splitTriangle(n-1, newDL);
-      fill(0, 0, 255,75);
       splitTriangle(n-1, newDR);    
-      
-      fill(255,75);
       splitTriangle(n-1, newC);      
     }     
   } else {
@@ -90,9 +81,9 @@ public void createSierpinskiDual(Triangle triangle) {
   Vertx u = triangle.getVertx()[0];
   Vertx dl = triangle.getVertx()[1];
   Vertx dr = triangle.getVertx()[2];
-  Vertx d = new Vertx((dl.getX()+dr.getX())/2, (dl.getY()+dr.getY())/2);
-  Vertx ur = new Vertx((u.getX()+dr.getX())/2, (u.getY()+dr.getY())/2);
-  Vertx ul = new Vertx((dl.getX()+u.getX())/2, (dl.getY()+u.getY())/2);
+  Vertx d = new Vertx((dl.getX()+dr.getX())/2, (dl.getY()+dr.getY())/2, u.getGen()+1);
+  Vertx ur = new Vertx((u.getX()+dr.getX())/2, (u.getY()+dr.getY())/2, u.getGen()+1);
+  Vertx ul = new Vertx((dl.getX()+u.getX())/2, (dl.getY()+u.getY())/2, u.getGen()+1);
   triangle.storeDual(d, ur, ul);
 }
 
@@ -104,10 +95,5 @@ public Triangle searchTriVertx(Vertx child, Vertx matchee) {
       }
     }
   }
-  //child.show();
-  //matchee.show();
   return mainTriangle;
 };
-
-
-//make variable list to store adjacent triangles to a triangle? Triangle adjUp = ...
