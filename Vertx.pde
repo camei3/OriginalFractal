@@ -5,8 +5,13 @@ public class Vertx {
   public Vertx(float x, float y) {
     xPos = x;
     yPos = y;
+    generation = 0;
   }
-  
+  public Vertx(float x, float y, int gen) {
+    xPos = x;
+    yPos = y;
+    generation = gen;
+  }
   public void show() {
     stroke(255);
     strokeWeight(25);
